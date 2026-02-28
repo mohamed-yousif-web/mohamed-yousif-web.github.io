@@ -95,22 +95,30 @@ border-radius:20px;
 }
 
 .toggle{
-margin-top:15px;
-cursor:pointer;
-padding:8px 15px;
-border-radius:20px;
-background:#00ffff;
-color:black;
-font-weight:bold;
-display:inline-block;
+    margin-top:20px;
+    cursor:pointer;
+    padding:10px 25px;
+    border-radius:30px;
+    font-weight:bold;
+    letter-spacing:1px;
+    background:linear-gradient(45deg,#00f5ff,#ff00ff,#00ff88,#ff8800);
+    background-size:300% 300%;
+    animation:rgbButton 4s linear infinite;
+    color:white;
+    border:none;
+    box-shadow:0 0 15px rgba(0,255,255,0.7);
+    transition:0.3s ease;
 }
-.light{
-background:white;
-color:black;
+
+.toggle:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 30px rgba(0,255,255,1);
 }
-.light .card{
-background:rgba(0,0,0,0.05);
-color:black;
+
+@keyframes rgbButton{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 </style>
 </head>
@@ -149,6 +157,7 @@ document.body.classList.toggle("light");
 
 </body>
 </html>
+
 
 
 
