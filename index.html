@@ -97,22 +97,45 @@ border-radius:20px;
 .toggle{
     margin-top:20px;
     cursor:pointer;
-    padding:10px 25px;
-    border-radius:30px;
-    font-weight:bold;
-    letter-spacing:1px;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
     background:linear-gradient(45deg,#00f5ff,#ff00ff,#00ff88,#ff8800);
     background-size:300% 300%;
     animation:rgbButton 4s linear infinite;
     color:white;
-    border:none;
-    box-shadow:0 0 15px rgba(0,255,255,0.7);
-    transition:0.3s ease;
+    box-shadow:0 0 20px rgba(0,255,255,0.8);
+    transition:0.4s ease;
+}
+    .light{
+    background:linear-gradient(135deg,#f5f7fa,#c3cfe2);
+    color:#111;
+}
+
+.light .card{
+    background:white;
+    color:#111;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+.light .links a{
+    background:rgba(0,0,0,0.05);
+    color:#111;
+    box-shadow:none;
+}
+
+.light .links a:hover{
+    background:#111;
+    color:white;
 }
 
 .toggle:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 30px rgba(0,255,255,1);
+    transform:scale(1.15) rotate(15deg);
+    box-shadow:0 0 35px rgba(0,255,255,1);
 }
 
 @keyframes rgbButton{
@@ -145,18 +168,42 @@ border-radius:20px;
 <img src="https://api.qrserver.com/v1/create-qr-code/?size=3000x3000&data=https://mohamed-yousif-web.github.io">
 </div>
 
-<div class="toggle" onclick="toggleMode()">Toggle Mode</div>
+<div class="toggle" onclick="toggleMode()">
+    <span id="modeIcon">🌙</span>
 
 </div>
 
 <script>
+
 function toggleMode(){
-document.body.classList.toggle("light");
+    document.body.classList.toggle("light");
+
+    const icon = document.getElementById("modeIcon");
+
+    if(document.body.classList.contains("light")){
+        icon.textContent = "☀️";
+        localStorage.setItem("theme","light");
+    }else{
+        icon.textContent = "🌙";
+        localStorage.setItem("theme","dark");
+    }
 }
+
+window.onload = function(){
+    const savedTheme = localStorage.getItem("theme");
+    const icon = document.getElementById("modeIcon");
+
+    if(savedTheme === "light"){
+        document.body.classList.add("light");
+        icon.textContent = "☀️";
+    }
+}
+
 </script>
 
 </body>
 </html>
+
 
 
 
